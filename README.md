@@ -47,7 +47,7 @@ You should not take more than 3 hours of time on this, even if you feel incomple
 Please, answer the following questions in this readme, underneath the question
 
 1. Name a newer feature of javascript that you believe is extra useful, and discuss how you have used it in this project, or how you would use it if needed.
-Async/await is a newer feature that reduces the complexity of dealing with promises. It cuts out long "then" chains and allows a promise to be run in just a few lines. While I didn't use it in this project, I could have used it when calling the Github API using Fetch, since those are designed as promises and async/await is just another way of dealing with them.
+- Async/await is a newer feature that reduces the complexity of dealing with promises. It cuts out long "then" chains and allows a promise to be run in just a few lines. While I didn't use it in this project, I could have used it when calling the Github API using Fetch, since those are designed as promises and async/await is just another way of dealing with them.
 
 2. What are 3 things you think `React` does very poorly? What tools do this better, if any?
 - Out of the box, React has very little added on to it and most things require third-party packages. While this is good for smaller projects, enterprise level projects might want a considerable amount of added features. Angular is a little better in that regard.
