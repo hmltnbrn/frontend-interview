@@ -1,8 +1,8 @@
 import * as React from "react";
-import { useSetUserContext } from "../contexts/user";
+import { UserContext } from "../contexts/user";
 
 const Login = () => {
-  const [user] = React.useState({
+  const [user, setUser] = React.useState({
     email: "",
     password: ""
   });
@@ -12,11 +12,11 @@ const Login = () => {
     setError(null);
   }, [user.email, user.password]);
 
-  const setUserContext = useSetUserContext();
+  const { setUserContext } = React.useContext(UserContext);
   return (
     <>
       <h1>Login</h1>
-      {error && <p>Error: {error}</p>}
+      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
       <form
         onSubmit={e => {
           setError(null);
@@ -24,14 +24,15 @@ const Login = () => {
           if (
             user.email &&
             user.password &&
+            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(user.email) &&
             user.password.trim() === "password"
           ) {
             setUserContext({
-              name: "Test User",
-              ...user
+              ...user,
+              name: "Test User"
             });
           } else {
-            setError("invalid");
+            setError("Invalid email or password");
           }
         }}
       >
@@ -39,14 +40,15 @@ const Login = () => {
           name="email"
           value={user.email}
           onChange={event => {
-            user.email = event.target.value;
+            setUser({...user, email: event.target.value})
           }}
         />
         <input
           name="password"
+          type="password"
           value={user.password}
           onChange={event => {
-            user.password = event.target.value;
+            setUser({...user, password: event.target.value})
           }}
         />
         <button type="submit">Login</button>

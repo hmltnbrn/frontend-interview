@@ -1,8 +1,8 @@
 import * as React from "react";
-import { useUserContext } from "../contexts/user";
+import { UserContext } from "../contexts/user";
 
 const Home = () => {
-  const user = useUserContext();
+  const { user } = React.useContext(UserContext);
   return (
     <main>
       <h1>Welcome {user.name}</h1>

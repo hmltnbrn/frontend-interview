@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Login from "./components/Login";
-import { AuthController, useUserContext } from "./contexts/user";
+import { AuthController, UserContext } from "./contexts/user";
 import AuthenticatedApp from "./components/AuthenticatedApp";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 }
 
 const AuthOrLogin = () => {
-  const user = useUserContext();
+  const { user } = React.useContext(UserContext);
 
   return user.email ? <AuthenticatedApp /> : <Login />;
 };
